@@ -15,39 +15,59 @@ public class Lucky7peli {
 		Random r = new Random();	//random annetti r
 		Scanner scanner = new Scanner(System.in);
 		
-		int dice1, dice2, dice3;
+		int dice1, dice2, dice3, roll;
+		roll = 0;
 		String playAgain;
 		System.out.println("Enter money amount");
 		int money = scanner.nextInt();
 		
 
 
-		do//rahat lopppu peli loppuu
+		do//loop
 		{
 			//nopille annetaan random numero 1-10 joka kerta uudestaan
 			dice1 = r.nextInt(10) + 1;
 			dice2 = r.nextInt(10) + 1;
 			dice3 = r.nextInt(10) + 1;
+
+
 			
+			if(roll >= 0)
+			{
+
+			playAgain = scanner.nextLine();
+			if (playAgain.equals("n"))
+			{
+				break;
+			}
+			}
+			
+			money -= 1;
 		if (dice1 == 7 | dice2 == 7 | dice3 == 7) //Jos jokin nopista on 7 toista
 			{
 				System.out.println("Congratz you win");
 				System.out.println("Dice were " + dice1 + " " + dice2 + " " + dice3);
 				money += 3;
+				
+				System.out.println("Current money is " + money);
 			}//if loppu
 		
 		else //jos mikään noppa ei ollut 7 toista
 			{
 				System.out.println("You lost!");
 				System.out.println("Dices were " + dice1 + " " + dice2 + " " + dice3);
-				money -= 1;
+				System.out.println("Current money is " + money);
 			}//else loppu
+			
+			
+		roll++;	//lisää yksi rolliin
+		System.out.println("Play again? y/n"); //pelaatko uudestaan
 		
-		}		while (money >0);//while loppu
+		}		while (money >0);//while loppu ja jos rahat loppuu peli loppuu suoraan
 		
 		System.out.println("Thanks for playing!");
-		
-		
+		System.out.println("Money left is " + money + " and you played " + roll + " times");
+
 		
 		
 		
